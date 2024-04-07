@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 
 export async function GET(req, { params }) {
     try {
-        console.log("hoal")
         const response = await fetch('http://api-cecoban.sensedia.com/dev/imss/semanasTrabajadas', {
             headers: {
                 "Content-Type": "application/json",
