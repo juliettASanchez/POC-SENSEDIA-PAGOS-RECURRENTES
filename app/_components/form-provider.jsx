@@ -41,14 +41,14 @@ const LoginForm = () => {
                 <path
                   d="M10.2544 9.30353L19.5088 15.7816L28.7632 9.30353"
                   stroke="black"
-                  stroke-width="2"
-                  stroke-linecap="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
                   stroke-linejoin="round"
                 />
                 <path
                   d="M1 24.1105V5.60178C1 3.55735 2.65733 1.90002 4.70175 1.90002H34.3158C36.3603 1.90002 38.0175 3.55735 38.0175 5.60178V24.1105C38.0175 26.155 36.3603 27.8123 34.3158 27.8123H4.70175C2.65733 27.8123 1 26.155 1 24.1105Z"
                   stroke="black"
-                  stroke-width="2"
+                  strokeWidth="2"
                 />
               </svg>
             </div>
@@ -74,57 +74,57 @@ const LoginForm = () => {
                 <path
                   d="M9.00914 1.67473H5.00457C2.7929 1.67473 1 3.38432 1 5.49321V9.3117"
                   stroke="black"
-                  stroke-width="2"
-                  stroke-linecap="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
                   stroke-linejoin="round"
                 />
                 <path
                   d="M29.032 1.67473H33.0366C35.2483 1.67473 37.0411 3.38432 37.0411 5.49321V9.3117"
                   stroke="black"
-                  stroke-width="2"
-                  stroke-linecap="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
                   stroke-linejoin="round"
                 />
                 <path
                   d="M27.0297 11.2209V15.0394"
                   stroke="black"
-                  stroke-width="2"
-                  stroke-linecap="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
                   stroke-linejoin="round"
                 />
                 <path
                   d="M11.0114 11.2209V15.0394"
                   stroke="black"
-                  stroke-width="2"
-                  stroke-linecap="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
                   stroke-linejoin="round"
                 />
                 <path
                   d="M13.0137 26.4949C13.0137 26.4949 15.016 28.4041 19.0206 28.4041C23.0252 28.4041 25.0274 26.4949 25.0274 26.4949"
                   stroke="black"
-                  stroke-width="2"
-                  stroke-linecap="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
                   stroke-linejoin="round"
                 />
                 <path
                   d="M19.0206 11.2209V20.7672H17.0183"
                   stroke="black"
-                  stroke-width="2"
-                  stroke-linecap="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
                   stroke-linejoin="round"
                 />
                 <path
                   d="M9.00914 36.0411H5.00457C2.7929 36.0411 1 34.3316 1 32.2226V28.4041"
                   stroke="black"
-                  stroke-width="2"
-                  stroke-linecap="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
                   stroke-linejoin="round"
                 />
                 <path
                   d="M29.032 36.0411H33.0366C35.2483 36.0411 37.0411 34.3316 37.0411 32.2226V28.4041"
                   stroke="black"
-                  stroke-width="2"
-                  stroke-linecap="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
                   stroke-linejoin="round"
                 />
               </svg>
@@ -151,15 +151,15 @@ const LoginForm = () => {
                 <path
                   d="M15.2091 8.90456C15.2091 12.8282 12.0283 16.0091 8.10456 16.0091C4.18082 16.0091 1 12.8282 1 8.90456C1 4.98082 4.18082 1.8 8.10456 1.8C12.0283 1.8 15.2091 4.98082 15.2091 8.90456ZM15.2091 8.90456H36.5228V14.233"
                   stroke="black"
-                  stroke-width="2"
-                  stroke-linecap="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
                   stroke-linejoin="round"
                 />
                 <path
                   d="M29.4183 8.90457V14.233"
                   stroke="black"
-                  stroke-width="2"
-                  stroke-linecap="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
                   stroke-linejoin="round"
                 />
               </svg>

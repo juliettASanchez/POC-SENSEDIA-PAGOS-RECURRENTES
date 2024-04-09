@@ -12,8 +12,8 @@ export default function Navbar() {
       <Image
         src={'/assets/logo.png'}
         alt="Logo Cecoban"
-        width={215}
-        height={54}
+        width={150}
+        height={24}
         className="filter grayscale saturate-0 "
       />
       <div>
@@ -21,7 +21,7 @@ export default function Navbar() {
           <Popover.Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-10 w-10 cursor-pointer"
+              className="h-8 w-8 cursor-pointer"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -35,19 +35,7 @@ export default function Navbar() {
             </svg>
           </Popover.Button>
 
-          <Popover.Panel className="absolute z-10 top-0 right-0 mt-12">
-            <div className="bg-white shadow-md rounded-md">
-              <div>
-                {/* Cambiar router.push('/') a redirect('/') */}
-                <button
-                  onClick={() => router.push('/')}
-                  className="block px-10 py-2 text-gray-800 hover:bg-gray-200 w-full text-left"
-                >
-                  Cerrar sesión
-                </button>
-              </div>
-            </div>
-          </Popover.Panel>
+
         </Popover>
       </div>
     </div>
