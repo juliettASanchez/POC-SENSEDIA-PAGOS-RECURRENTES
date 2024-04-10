@@ -8,10 +8,9 @@ import Paginator from './_components/paginator';
 import { Calendar } from './_components/calendar';
 import Modal from './_components/modal';
 
-window.addEventListener('DOMContentLoaded', () => {
+/* window.addEventListener('DOMContentLoaded', () => {
   window.scrollTo(0, 0);
-});
-
+}); */
 
 export default function Page() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -31,7 +30,6 @@ export default function Page() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-
   }, []);
 
   const fetcher = (url) =>
@@ -50,7 +48,7 @@ export default function Page() {
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
-    scrollToTop()
+    /* scrollToTop(); */
   };
   /* const { data = {}, error, isLoading } = useSWR(`/api/${params.id}`, fetcher); */
 
@@ -60,7 +58,7 @@ export default function Page() {
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
-    scrollToTop();
+    /* scrollToTop(); */
   };
 
   const handleRecurrenceChange = (e) => {
@@ -82,34 +80,53 @@ export default function Page() {
     setRecurrenceEnd(date);
   };
 
-  const scrollToTop = () => {
+  /* const scrollToTop = () => {
     console.log("me activo")
     window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  }; */
 
   const handleSubmit = async () => {
-    openModal()
-    setPay(true)
+    openModal();
+    setPay(true);
     const body = {
-      payAmount, paymentMethod, clabe, payDay, description, recurrence, recurrenceName, recurrenceStart, recurrenceEnd
-    }
-    console.log("payAmount:", payAmount);
-    console.log("paymentMethod:", paymentMethod);
-    console.log("clabe:", clabe);
-    console.log("payDay:", payDay);
-    console.log("description:", description);
-    console.log("recurrence:", recurrence);
-    console.log("recurrenceName:", recurrenceName);
-    console.log("recurrenceStart:", recurrenceStart);
-    console.log("recurrenceEnd:", recurrenceEnd);
-    console.log('Guardando información del formulario...', payAmount, paymentMethod, clabe, payDay, description, recurrence, recurrenceName, recurrenceStart, recurrenceEnd);
+      payAmount,
+      paymentMethod,
+      clabe,
+      payDay,
+      description,
+      recurrence,
+      recurrenceName,
+      recurrenceStart,
+      recurrenceEnd,
+    };
+    console.log('payAmount:', payAmount);
+    console.log('paymentMethod:', paymentMethod);
+    console.log('clabe:', clabe);
+    console.log('payDay:', payDay);
+    console.log('description:', description);
+    console.log('recurrence:', recurrence);
+    console.log('recurrenceName:', recurrenceName);
+    console.log('recurrenceStart:', recurrenceStart);
+    console.log('recurrenceEnd:', recurrenceEnd);
+    console.log(
+      'Guardando información del formulario...',
+      payAmount,
+      paymentMethod,
+      clabe,
+      payDay,
+      description,
+      recurrence,
+      recurrenceName,
+      recurrenceStart,
+      recurrenceEnd
+    );
     // Aquí puedes agregar la lógica para manejar el envío del formulario
     try {
       const res = await fetch('/api', {
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
-        method: "POST",
+        method: 'POST',
         body: JSON.stringify({
           payAmount: payAmount,
           paymentMethod: paymentMethod,
@@ -119,16 +136,16 @@ export default function Page() {
           recurrenceName: recurrenceName,
           recurrenceStart: recurrenceStart,
           recurrenceEnd: recurrenceEnd,
-          receives: "Laura"
-        })
-      })
+          receives: 'Laura',
+        }),
+      });
       if (res) {
         console.log(res);
       } else {
-        console.error("error");
+        console.error('error');
       }
     } catch (error) {
-      console.error("Error register pay", error);
+      console.error('Error register pay', error);
     }
   };
 
@@ -166,7 +183,6 @@ export default function Page() {
   const closeModal = () => {
     setIsModalOpen(false);
   };
-
 
   return (
     <main className="bg-gray-200">
@@ -227,12 +243,13 @@ export default function Page() {
           </div>
           <div className="grid justify-items-center gap-1 z-10">
             <div
-              className={`flex rounded-full justify-center items-center md:w-20 md:h-20 w-10 h-10 ${currentPage === 2
-                ? 'bg-purple-600'
-                : currentPage === 1
+              className={`flex rounded-full justify-center items-center md:w-20 md:h-20 w-10 h-10 ${
+                currentPage === 2
+                  ? 'bg-purple-600'
+                  : currentPage === 1
                   ? 'bg-purple-400'
                   : ''
-                }`}
+              }`}
             >
               <svg
                 width="30"
@@ -249,20 +266,22 @@ export default function Page() {
               </svg>
             </div>
             <p
-              className={`font-medium ${currentPage === 2
-                ? 'text-purple-600 '
-                : currentPage === 1
+              className={`font-medium ${
+                currentPage === 2
+                  ? 'text-purple-600 '
+                  : currentPage === 1
                   ? 'text-purple-400'
                   : ''
-                }`}
+              }`}
             >
               Recurrencia
             </p>
           </div>
           <div className="grid justify-items-center gap-1 z-10">
             <div
-              className={`flex rounded-full justify-center items-center md:w-20 md:h-20 w-10 h-10 ${pay ? 'bg-purple-600' : 'bg-purple-400'
-                }`}
+              className={`flex rounded-full justify-center items-center md:w-20 md:h-20 w-10 h-10 ${
+                pay ? 'bg-purple-600' : 'bg-purple-400'
+              }`}
             >
               <svg
                 width="30"
@@ -282,8 +301,9 @@ export default function Page() {
               </svg>
             </div>
             <p
-              className={`font-medium ${pay ? 'text-purple-600 ' : 'text-purple-400'
-                }`}
+              className={`font-medium ${
+                pay ? 'text-purple-600 ' : 'text-purple-400'
+              }`}
             >
               Pago
             </p>
@@ -404,18 +424,16 @@ export default function Page() {
                   <label htmlFor="paymentCheckbox" className="text-sm">
                     Agendar pago recurrente
                   </label>
-                  {
-                    !isChecked && (
-                      <p className="text-xs text-center font-extralight my-2">
-                        ¡Planifica tus pagos de forma conveniente y sin
-                        preocupaciones! Selecciona la opción 'Agendar pago
-                        recurrente' para acceder a nuestras herramientas de
-                        programación de pagos automáticos. Simplifica tu vida
-                        financiera y asegúrate de que tus pagos se realicen
-                        puntualmente con esta práctica función.
-                      </p>
-                    )
-                  }
+                  {!isChecked && (
+                    <p className="text-xs text-center font-extralight my-2">
+                      ¡Planifica tus pagos de forma conveniente y sin
+                      preocupaciones! Selecciona la opción 'Agendar pago
+                      recurrente' para acceder a nuestras herramientas de
+                      programación de pagos automáticos. Simplifica tu vida
+                      financiera y asegúrate de que tus pagos se realicen
+                      puntualmente con esta práctica función.
+                    </p>
+                  )}
                 </div>
               </div>
               {isChecked && (
@@ -459,7 +477,6 @@ export default function Page() {
                       <option value="mes">Mensual</option>
                     </select>
                   </div>
-
 
                   <div>
                     <label htmlFor="recurrenceEnd">Termina el:</label>
