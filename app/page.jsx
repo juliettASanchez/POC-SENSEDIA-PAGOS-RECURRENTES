@@ -28,9 +28,9 @@ export default function Page() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [pay, setPay] = useState(false);
 
-  useEffect(() => {
+  /* useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  }, []); */
 
   const fetcher = (url) =>
     fetch(url, {
