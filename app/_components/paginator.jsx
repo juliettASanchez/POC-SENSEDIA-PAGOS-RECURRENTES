@@ -20,8 +20,8 @@ const Paginator = ({ currentPage, onPageChange, onSave, totalPages }) => {
           key={page}
           className={`w-8 h-8 flex justify-center items-center 
           ${page === currentPage
-              ? 'bg-purple-600 text-white rounded-full px-12'
-              : 'bg-gray-300 rounded-full px-12'
+              ? ' bg-gray-300 rounded-full px-12'
+              : 'bg-purple-600  text-white rounded-full px-12'
             }`}
           onClick={() => handleClick(page)}
         >

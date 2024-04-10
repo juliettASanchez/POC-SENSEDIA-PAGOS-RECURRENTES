@@ -8,6 +8,11 @@ import Paginator from './_components/paginator';
 import { Calendar } from './_components/calendar';
 import Modal from './_components/modal';
 
+window.addEventListener('DOMContentLoaded', () => {
+  window.scrollTo(0, 0);
+});
+
+
 export default function Page() {
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -23,6 +28,11 @@ export default function Page() {
   const [recurrence, setRecurrence] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [pay, setPay] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+
+  }, []);
 
   const fetcher = (url) =>
     fetch(url, {
@@ -40,6 +50,7 @@ export default function Page() {
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
+    scrollToTop()
   };
   /* const { data = {}, error, isLoading } = useSWR(`/api/${params.id}`, fetcher); */
 
@@ -49,6 +60,7 @@ export default function Page() {
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
+    scrollToTop();
   };
 
   const handleRecurrenceChange = (e) => {
@@ -70,7 +82,12 @@ export default function Page() {
     setRecurrenceEnd(date);
   };
 
-  const handleSubmit = () => {
+  const scrollToTop = () => {
+    console.log("me activo")
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleSubmit = async () => {
     openModal()
     setPay(true)
     const body = {
@@ -87,14 +104,65 @@ export default function Page() {
     console.log("recurrenceEnd:", recurrenceEnd);
     console.log('Guardando información del formulario...', payAmount, paymentMethod, clabe, payDay, description, recurrence, recurrenceName, recurrenceStart, recurrenceEnd);
     // Aquí puedes agregar la lógica para manejar el envío del formulario
+    try {
+      const res = await fetch('/api', {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify({
+          payAmount: payAmount,
+          paymentMethod: paymentMethod,
+          clabe: clabe,
+          description: description,
+          recurrence: recurrence,
+          recurrenceName: recurrenceName,
+          recurrenceStart: recurrenceStart,
+          recurrenceEnd: recurrenceEnd,
+          receives: "Laura"
+        })
+      })
+      if (res) {
+        console.log(res);
+      } else {
+        console.error("error");
+      }
+    } catch (error) {
+      console.error("Error register pay", error);
+    }
   };
 
-  // Función para abrir el modal
+  /* const handleCreateUser = async (user) => {
+    try {
+      console.log(Creating ${user.username});
+      const res = await fetch(/api, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify({
+          email: user.email,
+          name: user.email,
+          password: uuid().toString(),
+        }),
+      });
+      if (res.ok) {
+        mutate(/api?${filterURI});
+        setResetForm(true);
+        console.log(Successfully created);
+      } else {
+        console.error(Failed to block user ${user.id});
+        setResetForm(false);
+      }
+    } catch (error) {
+      console.error("Error blocking user", error);
+    }
+  };
+ */
   const openModal = () => {
     setIsModalOpen(true);
   };
 
-  // Función para cerrar el modal
   const closeModal = () => {
     setIsModalOpen(false);
   };

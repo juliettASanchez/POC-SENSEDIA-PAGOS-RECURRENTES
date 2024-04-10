@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 const Modal = ({ isOpen, onClose }) => {
@@ -12,6 +13,7 @@ const Modal = ({ isOpen, onClose }) => {
         onClose();
     };
 
+    const id = "2k13432"
     return (
         <>
             {/* Fondo oscuro que cubre la pantalla */}
@@ -32,9 +34,9 @@ const Modal = ({ isOpen, onClose }) => {
                         {/* Contenido del modal */}
                         <p className="text-gray-600 font-light mb-6">Tu pago ha sido programado con éxito y se procesará según lo programado.</p>
                         {/* Botón para realizar otro pago */}
-                        <button className="bg-gray-400 hover:bg-gray-500 text-white font-semibold py-2 px-4 rounded focus:outline-none ">
-                            Realizar otro pago
-                        </button>
+                        <Link className="bg-gray-400 hover:bg-gray-500 text-white font-semibold py-2 px-4 rounded focus:outline-none" href={`/${id}`}>
+                            Ver pagos programados
+                        </Link>
                     </div>
                 </div>
             )}
