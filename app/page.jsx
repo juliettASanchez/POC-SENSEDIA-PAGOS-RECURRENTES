@@ -345,6 +345,17 @@ export default function Page() {
                     Tipo de cuenta : {data.tipoCuenta}
                   </p>
                 </div>
+
+                <div>
+                  <label htmlFor="payTo">Para</label>
+                  <div>
+                    <p className="text-purple-700">Cuenta: {data.cuenta}</p>
+                    <p className="text-purple-700">Comercio: {data.comercio}</p>
+                    <p className="text-purple-700">
+                      Razón social: {data.razon}
+                    </p>
+                  </div>
+                </div>
                 <div>
                   <label htmlFor="paymentMethod">Forma de pago:</label>
                   <input
@@ -353,37 +364,10 @@ export default function Page() {
                     id="paymentMethod"
                     value={paymentMethod}
                     onChange={(e) => setPaymentMethod(e.target.value)}
-                    placeholder="SPEI Vía Open Finance"
+                    placeholder="Pago domiciliado"
                     required
                   />
                 </div>
-                <div>
-                  <label htmlFor="clabe">Clabe:</label>
-                  <input
-                    className="w-full py-2 pr-8 border-b text-purple-700 border-gray-300 focus:outline-none focus:border-indigo-500"
-                    type="text"
-                    id="payTo"
-                    value={clabe}
-                    onChange={(e) => setClabe(e.target.value)}
-                    placeholder="AAA309039209"
-                    required
-                  />
-                </div>
-                {clabe && (
-                  <div>
-                    <label htmlFor="payTo">Para</label>
-                    <div>
-                      <p className="text-purple-700">Clabe: {clabe}</p>
-                      <p className="text-purple-700">cuenta: {data.cuenta}</p>
-                      <p className="text-purple-700">
-                        Comercio: {data.comercio}
-                      </p>
-                      <p className="text-purple-700">
-                        Razón social: {data.razon}
-                      </p>
-                    </div>
-                  </div>
-                )}
                 <div>
                   <label htmlFor="paymentDescription">Descripción:</label>
                   <input
