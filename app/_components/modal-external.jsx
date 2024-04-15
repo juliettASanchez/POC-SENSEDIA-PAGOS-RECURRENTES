@@ -24,7 +24,7 @@ const ModalExternal = ({ isOpen, onClose, isSuccess }) => {
             {/* Encabezado del modal */}
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-xl font-semibold text-blue-900">
-                Recibio un agendamineto de domiciliación
+                Notificación de domiciliación
               </h2>
 
               {/* Botón para cerrar el modal */}
