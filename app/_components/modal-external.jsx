@@ -1,16 +1,8 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-const Modal = ({ isOpen, onClose, isSuccess }) => {
+const ModalExternal = ({ isOpen, onClose, isSuccess }) => {
   const [isModalOpen, setIsModalOpen] = useState(isOpen);
-
-  const successTitle = 'Pago domiciliado exitosamente';
-  const successDescription =
-    'Tu pago ha sido programado con éxito y se procesará según lo programado.';
-
-  const failTitle = 'Pago domiciliado fallido';
-  const failDescription =
-    'Lamentablemente, tu pago domiciliado no pudo ser programado en este momento. Por favor, revisa los datos ingresados e intenta nuevamente más tarde. ';
 
   useEffect(() => {
     setIsModalOpen(isOpen);
@@ -31,16 +23,10 @@ const Modal = ({ isOpen, onClose, isSuccess }) => {
           <div className="bg-white p-8 rounded-lg max-w-md w-full m-10 text-center">
             {/* Encabezado del modal */}
             <div className="flex justify-between items-center mb-4">
-              {isSuccess && (
-                <h2 className="text-xl font-semibold text-blue-900">
-                  ¡{successTitle}!
-                </h2>
-              )}
-              {!isSuccess && (
-                <h2 className="text-xl font-semibold text-blue-900">
-                  ¡{failTitle}!
-                </h2>
-              )}
+              <h2 className="text-xl font-semibold text-blue-900">
+                Recibio un agendamineto de domiciliación
+              </h2>
+
               {/* Botón para cerrar el modal */}
               <button
                 onClick={handleClose}
@@ -61,21 +47,16 @@ const Modal = ({ isOpen, onClose, isSuccess }) => {
                 </svg>
               </button>
             </div>
-            {/* Contenido del modal */}
-            {isSuccess && (
-              <p className="text-gray-600 font-light mb-6">
-                {successDescription}
-              </p>
-            )}
-            {!isSuccess && (
-              <p className="text-gray-600 font-light mb-6">{failDescription}</p>
-            )}
+            <p className="text-gray-600 font-light mb-6">
+              Haga click para conocer el pago de domiciliación agendado
+            </p>
+
             {/* Botón para realizar otro pago */}
             <Link
               className="bg-gray-400 hover:bg-gray-500 text-white font-semibold py-2 px-4 rounded focus:outline-none"
-              href={`/${id}/agendamientos`}
+              href={`notificacion/${id}`}
             >
-              Ver pagos programados
+              Ver domiciliación agendada
             </Link>
           </div>
         </div>
@@ -84,4 +65,4 @@ const Modal = ({ isOpen, onClose, isSuccess }) => {
   );
 };
 
-export default Modal;
+export default ModalExternal;

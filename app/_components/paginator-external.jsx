@@ -1,9 +1,14 @@
 'use client';
 import { useState } from 'react';
 
-const Paginator = ({ currentPage, onPageChange, onSave, totalPages }) => {
+const PaginatorExternal = ({
+  currentPage,
+  onPageChange,
+  onSave,
+  totalPages,
+}) => {
   const handleClick = (page) => {
-    if (page === 2 && currentPage === 2) {
+    if (page === 2) {
       // Si currentPage es 2 y se hace clic en "guardar", ejecuta la función onSave
       onSave(); // Envía la información del formulario al componente Page
     } else {
@@ -24,14 +29,12 @@ const Paginator = ({ currentPage, onPageChange, onSave, totalPages }) => {
           }`}
           onClick={() => handleClick(page)}
         >
-          {page == 1 && currentPage == 1 && 'volver'}
-          {page == 1 && currentPage == 2 && 'atrás'}
-          {page == 2 && currentPage == 1 && 'siguiente'}
-          {page == 2 && currentPage == 2 && 'guardar'}
+          {page == 1 && 'volver'}
+          {page == 2 && 'Confirmar'}
         </button>
       ))}
     </div>
   );
 };
 
-export default Paginator;
+export default PaginatorExternal;

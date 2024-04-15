@@ -3,7 +3,7 @@
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Footer from './_components/footer';
-import Navbar from './_components/navbar';
+import NavbarExternal from './_components/navbar-external';
 import Paginator from './_components/paginator';
 import { Calendar } from './_components/calendar';
 import Modal from './_components/modal';
@@ -14,11 +14,11 @@ import Modal from './_components/modal';
 
 export default function Page() {
   const [currentPage, setCurrentPage] = useState(1);
-
-  const [payAmount, setPayAmount] = useState('');
+  const [to, setTo] = useState('');
+  const [payAmount, setPayAmount] = useState('1,000.00');
   const [paymentMethod, setPaymentMethod] = useState('');
   const [clabe, setClabe] = useState('');
-  const [payDay, setPayDay] = useState('');
+  const [payDay, setPayDay] = useState('01/10/2022');
   const [description, setDescription] = useState('');
   const [isChecked, setIsChecked] = useState(false);
   const [recurrenceName, setRecurrenceName] = useState('');
@@ -27,6 +27,7 @@ export default function Page() {
   const [recurrence, setRecurrence] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [pay, setPay] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   /* useEffect(() => {
     window.scrollTo(0, 0);
@@ -38,12 +39,12 @@ export default function Page() {
     }).then((r) => r.json());
 
   const data = {
-    nombre: 'ALBA MARINA ALVAREZ VAZQUEZ',
+    nombre: 'Alba Marina Alvarez Vazquez',
     banco: 'BBVA',
     tipoCuenta: 'Cuenta Ahorros',
     cuenta: '12904338950982',
-    comercio: 'Cuidados de salud',
-    razon: 'Cuidados de salud SA',
+    comercio: 'Servicios de Telefonía',
+    razon: 'Telefonía Mexicana S.A. de C.V.',
   };
 
   const handleCheckboxChange = () => {
@@ -120,6 +121,8 @@ export default function Page() {
       recurrenceStart,
       recurrenceEnd
     );
+    const randomResult = Math.random() < 0.5; // 50% de probabilidad de éxito
+    setIsSuccess(randomResult);
     // Aquí puedes agregar la lógica para manejar el envío del formulario
     try {
       const res = await fetch('/api', {
@@ -149,6 +152,31 @@ export default function Page() {
     }
   };
 
+  const formatDate = (fecha) => {
+    const meses = [
+      'enero',
+      'febrero',
+      'marzo',
+      'abril',
+      'mayo',
+      'junio',
+      'julio',
+      'agosto',
+      'septiembre',
+      'octubre',
+      'noviembre',
+      'diciembre',
+    ];
+
+    const parts = fecha.split('/');
+    const day = parseInt(parts[0], 10);
+    const monthIndex = parseInt(parts[1], 10) - 1;
+    const year = parseInt(parts[2], 10);
+
+    return `${day} de ${meses[monthIndex]} de ${year}`;
+  };
+
+  console.log(isSuccess);
   /* const handleCreateUser = async (user) => {
     try {
       console.log(Creating ${user.username});
@@ -187,12 +215,18 @@ export default function Page() {
   return (
     <main className="bg-gray-200">
       <section className="p-6">
-        <Navbar />
+        <NavbarExternal />
+        <div className="mt-10 justify-center grid text-center">
+          <h2 className="text-2xl font-bold text-blue-950">Banco Mexicano</h2>
+          <p className="text-sm font-bold text-blue-950">
+            PANEL DE DOMICILACIÓN
+          </p>
+        </div>
         {/* STEPS */}
         <div className="flex w-full justify-between my-10 relative items-center">
           <div className="grid justify-items-center gap-1 z-10">
             <div
-              className={`flex rounded-full justify-center items-center md:w-20 md:h-20 w-10 h-10 bg-purple-600 `}
+              className={`flex rounded-full justify-center items-center md:w-20 md:h-20 w-10 h-10 bg-blue-600 `}
             >
               <svg
                 width="30"
@@ -239,15 +273,15 @@ export default function Page() {
               </svg>
             </div>
 
-            <p className="text-purple-600 font-medium">Monto</p>
+            <p className="text-blue-600 text-sm font-medium">Domiciliación</p>
           </div>
           <div className="grid justify-items-center gap-1 z-10">
             <div
               className={`flex rounded-full justify-center items-center md:w-20 md:h-20 w-10 h-10 ${
                 currentPage === 2
-                  ? 'bg-purple-600'
+                  ? 'bg-blue-600'
                   : currentPage === 1
-                  ? 'bg-purple-400'
+                  ? 'bg-blue-400'
                   : ''
               }`}
             >
@@ -266,11 +300,11 @@ export default function Page() {
               </svg>
             </div>
             <p
-              className={`font-medium ${
+              className={`font-medium  text-sm  ${
                 currentPage === 2
-                  ? 'text-purple-600 '
+                  ? 'text-blue-600 '
                   : currentPage === 1
-                  ? 'text-purple-400'
+                  ? 'text-blue-400'
                   : ''
               }`}
             >
@@ -280,7 +314,7 @@ export default function Page() {
           <div className="grid justify-items-center gap-1 z-10">
             <div
               className={`flex rounded-full justify-center items-center md:w-20 md:h-20 w-10 h-10 ${
-                pay ? 'bg-purple-600' : 'bg-purple-400'
+                pay ? 'bg-blue-600' : 'bg-blue-400'
               }`}
             >
               <svg
@@ -301,14 +335,14 @@ export default function Page() {
               </svg>
             </div>
             <p
-              className={`font-medium ${
-                pay ? 'text-purple-600 ' : 'text-purple-400'
+              className={`font-medium  text-sm  ${
+                pay ? 'text-blue-600 ' : 'text-blue-400'
               }`}
             >
-              Pago
+              Agendamiento
             </p>
           </div>
-          <div className="absolute left-4 right-4 h-1 bg-purple-400 sm:top-10 top-6"></div>
+          <div className="absolute left-10 right-10 h-1 bg-blue-400 sm:top-10 top-6"></div>
         </div>
 
         {/* FORMULARIO */}
@@ -316,16 +350,18 @@ export default function Page() {
         <form onSubmit={handleSubmit}>
           {currentPage == 1 && (
             <div className="my-4 flex gap-6 flex-wrap">
-              <p className="w-full font-bold text-lg text-purple-600">MONTO</p>
+              <p className="w-full font-bold text-lg text-blue-600">
+                DOMICILIACIÓN
+              </p>
               <div className="items-center grid gap-6 w-full p-4 bg-white rounded-md drop-shadow-md">
                 <div>
-                  <label htmlFor="payAmount">Valor máximo a pagar:</label>
+                  <label htmlFor="payAmount">Valor a pagar:</label>
                   <div className="relative">
                     <span className="absolute inset-y-0 left-0 flex items-center text-gray-400 pointer-events-none">
                       MXN
                     </span>
                     <input
-                      className="w-full py-2 px-10 border-b text-purple-700 border-gray-300 focus:outline-none focus:border-indigo-500"
+                      className="w-full py-2 px-10 border-b text-blue-700 border-gray-300 focus:outline-none focus:border-indigo-500"
                       type="number"
                       id="payAmount"
                       value={payAmount}
@@ -337,11 +373,11 @@ export default function Page() {
                 </div>
                 <div>
                   <p>De:</p>
-                  <p className="text-purple-700 font-medium">{data.nombre}</p>
-                  <p className="text-purple-700 font-medium">
+                  <p className="text-blue-700 font-medium">{data.nombre}</p>
+                  <p className="text-blue-700 font-medium">
                     Banco: {data.banco}
                   </p>
-                  <p className="text-purple-700 font-medium">
+                  <p className="text-blue-700 font-medium">
                     Tipo de cuenta : {data.tipoCuenta}
                   </p>
                 </div>
@@ -349,51 +385,40 @@ export default function Page() {
                 <div>
                   <label htmlFor="payTo">Para</label>
                   <div>
-                    <p className="text-purple-700">Cuenta: {data.cuenta}</p>
-                    <p className="text-purple-700">Comercio: {data.comercio}</p>
-                    <p className="text-purple-700">
-                      Razón social: {data.razon}
-                    </p>
+                    <p className="text-blue-700">Cuenta: {data.cuenta}</p>
+                    <p className="text-blue-700">Comercio: {data.comercio}</p>
+                    <p className="text-blue-700">Razón social: {data.razon}</p>
                   </div>
                 </div>
                 <div>
                   <label htmlFor="paymentMethod">Forma de pago:</label>
-                  <input
-                    className="w-full py-2 pr-8 border-b text-purple-700 border-gray-300 focus:outline-none focus:border-indigo-500"
-                    type="text"
-                    id="paymentMethod"
-                    value={paymentMethod}
-                    onChange={(e) => setPaymentMethod(e.target.value)}
-                    placeholder="Pago domiciliado"
-                    required
-                  />
+                  <p className="text-blue-700">Pago domiciliado</p>
                 </div>
                 <div>
                   <label htmlFor="paymentDescription">Descripción:</label>
                   <input
-                    className="w-full py-2 pr-8 border-b text-purple-700 border-gray-300 focus:outline-none focus:border-indigo-500"
+                    className="w-full py-2 pr-8 border-b text-blue-700 border-gray-300 focus:outline-none focus:border-indigo-500"
                     type="text"
                     id="paymentDescription"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                    placeholder="Ej: Consulta médica"
+                    placeholder="Plan amigo anual"
                     required
                   />
                 </div>
-                <label htmlFor="payDay">Fecha de pago:</label>
-                <Calendar
-                  mode="single"
-                  selected={payDay}
-                  onSelect={handleDateSelect}
-                  initialFocus
-                />
+                <div>
+                  <label htmlFor="payDay">Fecha de cargo:</label>
+                  <p className="text-blue-700 font-medium">
+                    {formatDate(payDay)}
+                  </p>
+                </div>
               </div>
             </div>
           )}
 
           {currentPage == 2 && (
             <div className="my-8 flex gap-8 flex-wrap">
-              <p className="w-full font-bold text-lg text-purple-600">
+              <p className="w-full font-bold text-lg text-blue-600">
                 RECURRENCIA
               </p>
               <div className="items-center grid gap-6 w-full p-4 bg-white rounded-md drop-shadow-md">
@@ -427,12 +452,12 @@ export default function Page() {
                       Nombre de la recurrencia:
                     </label>
                     <input
-                      className="w-full py-2 pr-8 border-b text-purple-700 border-gray-300 focus:outline-none focus:border-indigo-500"
+                      className="w-full py-2 pr-8 border-b text-blue-700 border-gray-300 focus:outline-none focus:border-indigo-500"
                       type="text"
                       id="recurrenceName"
                       value={recurrenceName}
                       onChange={(e) => setRecurrenceName(e.target.value)}
-                      placeholder="Fisioterapia"
+                      placeholder="Plan amigo anual"
                       required
                     />
                   </div>
@@ -455,9 +480,6 @@ export default function Page() {
                       className="block w-full pl-3 pr-10 py-2 text-gray-400 border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
                     >
                       <option value="">Selecciona una opción</option>
-                      <option value="dia">Diario</option>
-                      <option value="semana">Semanal</option>
-                      <option value="quincena">Quincenal</option>
                       <option value="mes">Mensual</option>
                     </select>
                   </div>
@@ -472,7 +494,7 @@ export default function Page() {
                     />
                   </div>
                   <div>
-                    <p className="font-medium text-purple-600 text-xl text-center">
+                    <p className="font-medium text-blue-600 text-xl text-center">
                       IMPORTANTE:
                     </p>
                     <p className="text-xs text-center font-extralight my-2">
@@ -496,7 +518,7 @@ export default function Page() {
         />
       </section>
       <Footer />
-      <Modal isOpen={isModalOpen} onClose={closeModal} />
+      <Modal isOpen={isModalOpen} onClose={closeModal} isSuccess={isSuccess} />
     </main>
   );
 }

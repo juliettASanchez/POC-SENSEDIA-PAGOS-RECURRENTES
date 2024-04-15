@@ -6,14 +6,13 @@ const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [rfc, setrfc] = useState('');
   const [password, setPassword] = useState('');
-  const router = useRouter()
+  const router = useRouter();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Aquí puedes agregar la lógica para manejar el envío del formulario
     console.log('Datos del formulario:', { email, rfc, password });
     router.push(`/${rfc}`);
-
   };
 
   return (
@@ -170,7 +169,7 @@ const LoginForm = () => {
         <div className="text-center">
           <button
             type="submit"
-            className="inline-flex items-center bg-purple-600 text-white px-8 py-2 rounded-full"
+            className="inline-flex items-center bg-blue-600 text-white px-8 py-2 rounded-full"
           >
             <span>Ingresar</span>
             <svg
@@ -190,7 +189,7 @@ const LoginForm = () => {
       </form>
       <div className="flex mt-8 justify-center items-center">
         <span className="text-sm">¿Necesitas crear una cuenta?</span>
-        <p className="text-xs text-purple-600">{''}Registrate</p>
+        <p className="text-xs text-blue-600">{''}Registrate</p>
       </div>
     </>
   );

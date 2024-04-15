@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-const Modal = ({ isOpen, onClose, isSuccess }) => {
+const ModalConfirm = ({ isOpen, onClose, isSuccess }) => {
   const [isModalOpen, setIsModalOpen] = useState(isOpen);
 
   const successTitle = 'Pago domiciliado exitosamente';
@@ -31,16 +31,10 @@ const Modal = ({ isOpen, onClose, isSuccess }) => {
           <div className="bg-white p-8 rounded-lg max-w-md w-full m-10 text-center">
             {/* Encabezado del modal */}
             <div className="flex justify-between items-center mb-4">
-              {isSuccess && (
-                <h2 className="text-xl font-semibold text-blue-900">
-                  ¡{successTitle}!
-                </h2>
-              )}
-              {!isSuccess && (
-                <h2 className="text-xl font-semibold text-blue-900">
-                  ¡{failTitle}!
-                </h2>
-              )}
+              <h2 className="text-xl font-semibold text-blue-900">
+                ¡Pago domiciliado exitosamente!
+              </h2>
+
               {/* Botón para cerrar el modal */}
               <button
                 onClick={handleClose}
@@ -62,20 +56,16 @@ const Modal = ({ isOpen, onClose, isSuccess }) => {
               </button>
             </div>
             {/* Contenido del modal */}
-            {isSuccess && (
-              <p className="text-gray-600 font-light mb-6">
-                {successDescription}
-              </p>
-            )}
-            {!isSuccess && (
-              <p className="text-gray-600 font-light mb-6">{failDescription}</p>
-            )}
+            <p className="text-gray-600 font-light mb-6">
+              Su pago ha sido programado correctamente
+            </p>
+
             {/* Botón para realizar otro pago */}
             <Link
               className="bg-gray-400 hover:bg-gray-500 text-white font-semibold py-2 px-4 rounded focus:outline-none"
-              href={`/${id}/agendamientos`}
+              href={``}
             >
-              Ver pagos programados
+              Descargar comprobante
             </Link>
           </div>
         </div>
@@ -84,4 +74,4 @@ const Modal = ({ isOpen, onClose, isSuccess }) => {
   );
 };
 
-export default Modal;
+export default ModalConfirm;
