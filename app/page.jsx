@@ -1,9 +1,8 @@
 'use client';
 
-import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Footer from './_components/footer';
-import NavbarExternal from './_components/navbar-external';
+import NavbarTelcel from './_components/navbar-telcel';
 import Paginator from './_components/paginator';
 import { Calendar } from './_components/calendar';
 import Modal from './_components/modal';
@@ -18,7 +17,7 @@ export default function Page() {
   const [payAmount, setPayAmount] = useState('1,000.00');
   const [paymentMethod, setPaymentMethod] = useState('');
   const [clabe, setClabe] = useState('');
-  const [payDay, setPayDay] = useState('01/10/2022');
+  const [payDay, setPayDay] = useState('01/6/2024');
   const [description, setDescription] = useState('');
   const [isChecked, setIsChecked] = useState(false);
   const [recurrenceName, setRecurrenceName] = useState('');
@@ -32,6 +31,28 @@ export default function Page() {
   /* useEffect(() => {
     window.scrollTo(0, 0);
   }, []); */
+
+  const currentDate = new Date();
+  const year = currentDate.getFullYear();
+  const monthIndex = currentDate.getMonth(); // Los meses en JavaScript van de 0 a 11, por lo que sumamos 1
+  const day = currentDate.getDate();
+
+  const monthNames = [
+    'Enero',
+    'Febrero',
+    'Marzo',
+    'Abril',
+    'Mayo',
+    'Junio',
+    'Julio',
+    'Agosto',
+    'Septiembre',
+    'Octubre',
+    'Noviembre',
+    'Diciembre',
+  ];
+
+  const formattedDate = `${day} de ${monthNames[monthIndex]} de ${year}`;
 
   const fetcher = (url) =>
     fetch(url, {
@@ -215,9 +236,11 @@ export default function Page() {
   return (
     <main className="bg-gray-200">
       <section className="p-6">
-        <NavbarExternal />
+        <NavbarTelcel />
         <div className="mt-10 justify-center grid text-center">
-          <h2 className="text-2xl font-bold text-blue-950">Banco Mexicano</h2>
+          <h2 className="text-2xl font-bold text-blue-950">
+            Plataforma Telcel
+          </h2>
           <p className="text-sm font-bold text-blue-950">
             PANEL DE DOMICILACIÓN
           </p>
@@ -355,7 +378,7 @@ export default function Page() {
               </p>
               <div className="items-center grid gap-6 w-full p-4 bg-white rounded-md drop-shadow-md">
                 <div>
-                  <label htmlFor="payAmount">Valor a pagar:</label>
+                  <label htmlFor="payAmount">Valor a domiciliar:</label>
                   <div className="relative">
                     <span className="absolute inset-y-0 left-0 flex items-center text-gray-400 pointer-events-none">
                       MXN
@@ -468,6 +491,9 @@ export default function Page() {
                       selected={recurrenceStart}
                       onSelect={handleDateSelectRecurrenceStart}
                       initialFocus
+                      disabled={(date) =>
+                        date < new Date() || date < new Date('1900-01-01')
+                      }
                     />
                   </div>
                   <div>
@@ -479,7 +505,6 @@ export default function Page() {
                       onChange={handleRecurrenceChange}
                       className="block w-full pl-3 pr-10 py-2 text-gray-400 border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
                     >
-                      <option value="">Selecciona una opción</option>
                       <option value="mes">Mensual</option>
                     </select>
                   </div>
@@ -491,6 +516,9 @@ export default function Page() {
                       selected={recurrenceEnd}
                       onSelect={handleDateSelectRecurrenceEnd}
                       initialFocus
+                      disabled={(date) =>
+                        date < new Date() || date > new Date('2025-04-20')
+                      }
                     />
                   </div>
                   <div>

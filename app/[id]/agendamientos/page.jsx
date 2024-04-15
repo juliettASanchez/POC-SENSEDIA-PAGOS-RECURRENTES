@@ -1,11 +1,10 @@
 'use client';
 
 import Footer from '../../_components/footer';
-import Navbar from '../../_components/navbar';
-
 import { useParams } from 'next/navigation';
 import { useState } from 'react';
 import Link from 'next/link';
+import NavbarTelcel from '../../_components/navbar-telcel';
 
 export default function Page() {
   const params = useParams();
@@ -19,7 +18,7 @@ export default function Page() {
   return (
     <main className="bg-gray-200">
       <section className="p-8 h-screen">
-        <Navbar />
+        <NavbarTelcel />
         <div className="mt-10">
           <h3 className="text-center text-blue-700 text-lg font-bold">
             Gestor de Pagos Domiciliados
@@ -27,30 +26,23 @@ export default function Page() {
           <div className="my-5 gap-4 grid">
             <p className="font-medium text-base my-2">Servicios</p>
             <div className="flex justify-between">
-              <p>Plan amigo</p>
-              <p>$2,500.00</p>
+              <p className="w-32">Plan amigo</p>
+              <p className="w-32"> $2,500.00</p>
               <button className="text-white rounded-full bg-gray-400 hover:bg-gray-500 px-2">
                 Cancelar
               </button>
             </div>
 
             <div className="flex justify-between">
-              <p>Luz</p>
-              <p>$1,000.00</p>
+              <p className="w-32">Netflix</p>
+              <p className="w-32">$1,500.000</p>
               <button className="text-white rounded-full bg-gray-400 hover:bg-gray-500 px-2">
                 Cancelar
               </button>
             </div>
             <div className="flex justify-between">
-              <p>Telefonía</p>
-              <p>$1,500.000</p>
-              <button className="text-white rounded-full bg-gray-400 hover:bg-gray-500 px-2">
-                Cancelar
-              </button>
-            </div>
-            <div className="flex justify-between">
-              <p>Internet</p>
-              <p>$3,000.00</p>
+              <p className="w-32">Internet</p>
+              <p className="w-32">$3,000.00</p>
               <button className="text-white rounded-full bg-gray-400 hover:bg-gray-500 px-2">
                 Cancelar
               </button>

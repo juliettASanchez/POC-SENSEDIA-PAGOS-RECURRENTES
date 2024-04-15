@@ -48,7 +48,7 @@ const ModalExternal = ({ isOpen, onClose, isSuccess }) => {
               </button>
             </div>
             <p className="text-gray-600 font-light mb-6">
-              Haga click para conocer el pago de domiciliación agendado
+              Haga click para conocer el pago domiciliado
             </p>
 
             {/* Botón para realizar otro pago */}
@@ -56,7 +56,7 @@ const ModalExternal = ({ isOpen, onClose, isSuccess }) => {
               className="bg-gray-400 hover:bg-gray-500 text-white font-semibold py-2 px-4 rounded focus:outline-none"
               href={`notificacion/${id}`}
             >
-              Ver domiciliación agendada
+              Ver domiciliación
             </Link>
           </div>
         </div>

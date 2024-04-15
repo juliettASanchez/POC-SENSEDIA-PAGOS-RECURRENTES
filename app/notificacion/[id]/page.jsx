@@ -1,7 +1,7 @@
 'use client';
 
 import Footer from '../../_components/footer';
-import Navbar from '../../_components/navbar';
+import NavbarExternal from '../../_components/navbar-external';
 import { useState } from 'react';
 import PaginatorExternal from '../../_components/paginator-external';
 import ModalConfirm from '../../_components/modal-confirm';
@@ -36,8 +36,8 @@ export default function Page() {
     banco: 'BBVA',
     tipoCuenta: 'Cuenta Ahorros',
     cuenta: '12904338950982',
-    comercio: 'Cuidados de salud',
-    razon: 'Cuidados de salud SA',
+    comercio: 'Servicios de Telefonía',
+    razon: 'Telefonía Mexicana S.A. de C.V.',
   };
 
   const handleCheckboxChange = () => {
@@ -153,7 +153,7 @@ export default function Page() {
   return (
     <main className="bg-slate-50">
       <section className="p-6">
-        <Navbar />
+        <NavbarExternal />
         <div className="mt-10 justify-center grid text-center">
           <p className="text-sm font-bold text-blue-950">
             NOTIFICACIÓN DE DOMICILIACIÓN
@@ -172,7 +172,7 @@ export default function Page() {
             <div className="mt-2 mb-4 flex gap-6 flex-wrap">
               <div className="items-center grid gap-6 w-full p-4 bg-white rounded-md drop-shadow-md">
                 <div>
-                  <label className="text-xl">Valor máximo a pagar:</label>
+                  <label className="text-xl">Valor a pagar:</label>
                   <div className="relative">
                     <p className="w-full py-2 font-medium px-1 border-b text-blue-700 focus:outline-none focus:border-indigo-500">
                       MXN {payAmount}
@@ -181,7 +181,7 @@ export default function Page() {
                 </div>
                 <div>
                   <p className="text-xl mb-2">Datos del remitente:</p>
-                  <p>Para:</p>
+                  <p>De:</p>
                   <p className="text-blue-700 font-medium">{data.nombre}</p>
                   <p className="text-blue-700 font-medium">
                     Banco: {data.banco}
@@ -191,7 +191,7 @@ export default function Page() {
                   </p>
                 </div>
                 <div>
-                  <label htmlFor="payTo">Para</label>
+                  <label htmlFor="payTo">Para:</label>
                   <div>
                     <p className="text-blue-700">Cuenta: {data.cuenta}</p>
                     <p className="text-blue-700">Comercio: {data.comercio}</p>
@@ -201,14 +201,14 @@ export default function Page() {
                 <div className="border-b pb-1">
                   <label htmlFor="payTo">RFC:</label>
                   <div>
-                    <p className="text-blue-700"> {data.cuenta}</p>
+                    <p className="text-blue-700">MAAJ870304M28</p>
                   </div>
                 </div>
                 <div>
                   <p className="text-xl mb-2">Datos del pago domiciliado:</p>
                   <label htmlFor="paymentMethod">Frecuencia:</label>
                   <p className="text-blue-700 font-medium">
-                    personalizada, 2 veces por mes hasta el 25 de marzo de 2025
+                    personalizada, 1 veces por mes hasta el 25 de marzo de 2025
                   </p>
                 </div>
                 <div>
@@ -216,7 +216,7 @@ export default function Page() {
                     Fecha del primer pago:
                   </label>
                   <p className="text-blue-700 font-medium">
-                    25 de marzo de 2025
+                    1 de junio de 2024
                   </p>
                 </div>
                 <div>

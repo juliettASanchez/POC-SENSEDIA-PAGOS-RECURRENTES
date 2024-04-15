@@ -207,9 +207,7 @@ export default function Page() {
 
   return (
     <main className="bg-gray-200">
-      <section className="p-6 w-full h-screen">
-        <Navbar />
-      </section>
+      <section className="p-6 w-full h-screen"></section>
       <Footer />
       <ModalExternal isOpen={true} onClose={closeModal} />
     </main>

@@ -67,6 +67,12 @@ const Modal = ({ isOpen, onClose, isSuccess }) => {
                 {successDescription}
               </p>
             )}
+            {/* {!isSuccess && (
+              <p className="text-gray-700 font-light mb-6">
+                Error: 402 - No se pudo agendar la domiciliación debido a fondos
+                insuficientes en la cuenta bancaria asociada
+              </p>
+            )} */}
             {!isSuccess && (
               <p className="text-gray-600 font-light mb-6">{failDescription}</p>
             )}
