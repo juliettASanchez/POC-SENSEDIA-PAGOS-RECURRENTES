@@ -63,9 +63,9 @@ const ModalConfirm = ({ isOpen, onClose, isSuccess }) => {
             {/* Botón para realizar otro pago */}
             <Link
               className="bg-gray-400 hover:bg-gray-500 text-white font-semibold py-2 px-4 rounded focus:outline-none"
-              href={``}
+              href={`/${id}/agendamientos`}
             >
-              Descargar comprobante
+              Ver pagos programados
             </Link>
           </div>
         </div>
