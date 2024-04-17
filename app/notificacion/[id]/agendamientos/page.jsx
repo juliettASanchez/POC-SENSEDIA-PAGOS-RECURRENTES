@@ -1,10 +1,10 @@
 'use client';
 
-import Footer from '../../_components/footer';
 import { useParams } from 'next/navigation';
 import { useState } from 'react';
 import Link from 'next/link';
-import NavbarTelcel from '../../_components/navbar-telcel';
+import NavbarTelcel from '../../../_components/navbar-telcel';
+import Footer from '../../../_components/footer';
 
 export default function Page() {
   const params = useParams();
