@@ -34,7 +34,7 @@ export default function Page() {
 
   const currentDate = new Date();
   const year = currentDate.getFullYear();
-  const monthIndex = currentDate.getMonth(); // Los meses en JavaScript van de 0 a 11, por lo que sumamos 1
+  const monthIndex = currentDate.getMonth();
   const day = currentDate.getDate();
 
   const monthNames = [
@@ -64,9 +64,15 @@ export default function Page() {
     banco: 'BBVA',
     tipoCuenta: 'Cuenta Ahorros',
     cuenta: '12904338950982',
-    comercio: 'Servicios de Telefonía',
-    razon: 'Telefonía Mexicana S.A. de C.V.',
+    comercio: 'Telcel Consultoría',
+    razon: 'Radiomóvil Dipsa',
   };
+
+  const numberOptions = Array.from({ length: 31 }, (_, index) => (
+    <option key={index + 1} value={index + 1}>
+      {index + 1}
+    </option>
+  ));
 
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
@@ -362,7 +368,7 @@ export default function Page() {
                 pay ? 'text-blue-600 ' : 'text-blue-400'
               }`}
             >
-              Agendamiento
+              Confirmación
             </p>
           </div>
           <div className="absolute left-10 right-10 h-1 bg-blue-400 sm:top-10 top-6"></div>
@@ -378,7 +384,7 @@ export default function Page() {
               </p>
               <div className="items-center grid gap-6 w-full p-4 bg-white rounded-md drop-shadow-md">
                 <div>
-                  <label htmlFor="payAmount">Valor a domiciliar:</label>
+                  <label htmlFor="payAmount">Valor a máximo a pagar:</label>
                   <div className="relative">
                     <span className="absolute inset-y-0 left-0 flex items-center text-gray-400 pointer-events-none">
                       MXN
@@ -389,7 +395,7 @@ export default function Page() {
                       id="payAmount"
                       value={payAmount}
                       onChange={(e) => setPayAmount(e.target.value)}
-                      placeholder=" $1.000,00"
+                      placeholder="$750,00 - $1.000,00"
                       required
                     />
                   </div>
@@ -425,7 +431,7 @@ export default function Page() {
                     id="paymentDescription"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                    placeholder="Plan amigo anual"
+                    placeholder="Plan amigo"
                     required
                   />
                 </div>
@@ -472,7 +478,7 @@ export default function Page() {
                 <div className="items-center grid gap-6 w-full p-4 bg-white rounded-md drop-shadow-md">
                   <div>
                     <label htmlFor="recurrenceName">
-                      Nombre de la recurrencia:
+                      Concepto de Domiciliación:
                     </label>
                     <input
                       className="w-full py-2 pr-8 border-b text-blue-700 border-gray-300 focus:outline-none focus:border-indigo-500"
@@ -480,37 +486,28 @@ export default function Page() {
                       id="recurrenceName"
                       value={recurrenceName}
                       onChange={(e) => setRecurrenceName(e.target.value)}
-                      placeholder="Plan amigo anual"
+                      placeholder="Plan amigo"
                       required
                     />
                   </div>
+
                   <div>
-                    <label htmlFor="recurrenceStart">Inicia el:</label>
-                    <Calendar
-                      mode="single"
-                      selected={recurrenceStart}
-                      onSelect={handleDateSelectRecurrenceStart}
-                      initialFocus
-                      disabled={(date) =>
-                        date < new Date() || date < new Date('1900-01-01')
-                      }
-                    />
-                  </div>
-                  <div>
-                    <p>Se repite:</p>
-                    <select
-                      id="recurrenceSelect"
-                      name="recurrence"
-                      value={recurrence}
-                      onChange={handleRecurrenceChange}
-                      className="block w-full pl-3 pr-10 py-2 text-gray-400 border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
-                    >
-                      <option value="mes">Mensual</option>
-                    </select>
+                    <p>Frecuencia:</p>
+                    <p className="block w-full pr-10 py-2 text-gray-400 border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                      Mensual
+                    </p>
                   </div>
 
                   <div>
-                    <label htmlFor="recurrenceEnd">Termina el:</label>
+                    <label htmlFor="recurrenceStart">Fecha de pago:</label>
+                    <div className="flex mt-2">
+                      <select>{numberOptions}</select>
+                      <p className="ml-3 text-gray-700">de cada mes</p>
+                    </div>
+                  </div>
+
+                  {/*  <div>
+                    <label htmlFor="recurrenceEnd">Fecha de pago:</label>
                     <Calendar
                       mode="single"
                       selected={recurrenceEnd}
@@ -520,7 +517,7 @@ export default function Page() {
                         date < new Date() || date > new Date('2025-04-20')
                       }
                     />
-                  </div>
+                  </div> */}
                   <div>
                     <p className="font-medium text-blue-600 text-xl text-center">
                       IMPORTANTE:
