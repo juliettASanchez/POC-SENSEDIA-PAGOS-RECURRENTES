@@ -64,7 +64,7 @@ export default function Page() {
     banco: 'BBVA',
     tipoCuenta: 'Cuenta Ahorros',
     cuenta: '12904338950982',
-    comercio: 'Telcel Consultoría',
+    comercio: 'Telcel',
     razon: 'Radiomóvil Dipsa',
   };
 
@@ -384,7 +384,7 @@ export default function Page() {
               </p>
               <div className="items-center grid gap-6 w-full p-4 bg-white rounded-md drop-shadow-md">
                 <div>
-                  <label htmlFor="payAmount">Valor a máximo a pagar:</label>
+                  <label htmlFor="payAmount">Valor máximo a pagar:</label>
                   <div className="relative">
                     <span className="absolute inset-y-0 left-0 flex items-center text-gray-400 pointer-events-none">
                       MXN
