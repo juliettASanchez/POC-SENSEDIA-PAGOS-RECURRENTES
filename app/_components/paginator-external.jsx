@@ -29,7 +29,7 @@ const PaginatorExternal = ({
           }`}
           onClick={() => handleClick(page)}
         >
-          {page == 1 && 'volver'}
+          {page == 1 && 'declinar'}
           {page == 2 && 'Confirmar'}
         </button>
       ))}

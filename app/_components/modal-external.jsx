@@ -48,7 +48,8 @@ const ModalExternal = ({ isOpen, onClose, isSuccess }) => {
               </button>
             </div>
             <p className="text-gray-600 font-light mb-6">
-              Haga click para conocer el pago domiciliado
+              Al hacer clic en "Aceptar", serás redirigido al portal bancario
+              para revisar y aceptar o declinar la domiciliación.
             </p>
 
             {/* Botón para realizar otro pago */}
