@@ -3,7 +3,7 @@
 import { useParams } from 'next/navigation';
 import { useState } from 'react';
 import Link from 'next/link';
-import NavbarTelcel from '../../../_components/navbar-telcel';
+import NavbarExternal from '../../../_components/navbar-external';
 import Footer from '../../../_components/footer';
 
 export default function Page() {
@@ -18,7 +18,7 @@ export default function Page() {
   return (
     <main className="bg-gray-200">
       <section className="p-8 h-screen">
-        <NavbarTelcel />
+        <NavbarExternal />
         <div className="mt-10">
           <h3 className="text-center text-blue-700 text-lg font-bold">
             Gestor de Pagos Domiciliados

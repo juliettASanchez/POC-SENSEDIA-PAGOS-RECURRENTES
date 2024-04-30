@@ -57,16 +57,28 @@ const ModalConfirm = ({ isOpen, onClose, isSuccess }) => {
             </div>
             {/* Contenido del modal */}
             <p className="text-gray-600 font-light mb-6">
-              Su pago ha sido programado correctamente
+              Domiciliación exitosa, será redirigido con el proovedor del
+              servicio
             </p>
 
             {/* Botón para realizar otro pago */}
-            <Link
-              className="bg-gray-400 hover:bg-gray-500 text-white font-semibold py-2 px-4 rounded focus:outline-none"
-              href={`/${id}/agendamientos`}
-            >
-              Ver pagos programados
-            </Link>
+            <div className="flex gap-2 flex-wrap items-center justify-center">
+              <Link
+                className="bg-gray-400 hover:bg-gray-500 text-white font-semibold py-2 px-2 rounded focus:outline-none"
+                href={`/notificacion/${id}/agendamientos`}
+              >
+                Ver pagos programados
+              </Link>
+              <p className="bg-gray-400 hover:bg-gray-500 text-white font-semibold py-2 px-2 rounded focus:outline-none">
+                Descargar comprobante
+              </p>
+              <Link
+                className="bg-gray-400 hover:bg-gray-500 text-white font-semibold py-2 px-2 rounded focus:outline-none"
+                href={`/`}
+              >
+                Ir a Telcel
+              </Link>
+            </div>
           </div>
         </div>
       )}

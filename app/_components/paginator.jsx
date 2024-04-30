@@ -27,7 +27,7 @@ const Paginator = ({ currentPage, onPageChange, onSave, totalPages }) => {
           {page == 1 && currentPage == 1 && 'volver'}
           {page == 1 && currentPage == 2 && 'atrás'}
           {page == 2 && currentPage == 1 && 'siguiente'}
-          {page == 2 && currentPage == 2 && 'guardar'}
+          {page == 2 && currentPage == 2 && 'confirmar'}
         </button>
       ))}
     </div>

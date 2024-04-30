@@ -1,267 +1,126 @@
 'use client';
 
-import Footer from '../../_components/footer';
-import NavbarExternal from '../../_components/navbar-external';
-import { useState } from 'react';
-import PaginatorExternal from '../../_components/paginator-external';
-import ModalConfirm from '../../_components/modal-confirm';
+import { EyeClosedIcon } from '@radix-ui/react-icons';
+import { useRouter } from 'next/navigation';
 
-export default function Page() {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [payAmount, setPayAmount] = useState('1.000,00');
-  const [paymentMethod, setPaymentMethod] = useState('');
-  const [clabe, setClabe] = useState('');
-  const [payDay, setPayDay] = useState('01/10/2022');
-  const [description, setDescription] = useState('');
-  const [isChecked, setIsChecked] = useState(false);
-  const [recurrenceName, setRecurrenceName] = useState('');
-  const [recurrenceStart, setRecurrenceStart] = useState('');
-  const [recurrenceEnd, setRecurrenceEnd] = useState('');
-  const [recurrence, setRecurrence] = useState('');
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [pay, setPay] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
+export default function Login() {
+  const router = useRouter();
 
-  /* useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []); */
-
-  const fetcher = (url) =>
-    fetch(url, {
-      next: { revalidate: 60 }, // Revalidate every 60 seconds
-    }).then((r) => r.json());
-
-  const data = {
-    nombre: 'Alba Marina Alvarez Vazquez',
-    banco: 'BBVA',
-    tipoCuenta: 'Cuenta Ahorros',
-    cuenta: '12904338950982',
-    comercio: 'Servicios de Telefonía',
-    razon: 'Telefonía Mexicana S.A. de C.V.',
-  };
-
-  const handleCheckboxChange = () => {
-    setIsChecked(!isChecked);
-    /* scrollToTop(); */
-  };
-  /* const { data = {}, error, isLoading } = useSWR(`/api/${params.id}`, fetcher); */
-
-  if (!data) {
-    return <div>Usuario no existe</div>;
-  }
-
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-    /* scrollToTop(); */
-  };
-
-  const handleRecurrenceChange = (e) => {
-    setRecurrence(e.target.value);
-  };
-
-  const handleTentaclesChange = (e) => {
-    setTentacles(e.target.value);
-  };
-
-  const handleDateSelect = (date) => {
-    setPayDay(date);
-  };
-
-  const handleDateSelectRecurrenceStart = (date) => {
-    setRecurrenceStart(date);
-  };
-  const handleDateSelectRecurrenceEnd = (date) => {
-    setRecurrenceEnd(date);
-  };
-
-  /* const scrollToTop = () => {
-    console.log("me activo")
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }; */
-
-  const handleSubmit = async () => {
-    openModal();
-    setPay(true);
-    const body = {
-      payAmount,
-      paymentMethod,
-      clabe,
-      payDay,
-      description,
-      recurrence,
-      recurrenceName,
-      recurrenceStart,
-      recurrenceEnd,
-    };
-    console.log('payAmount:', payAmount);
-    console.log('paymentMethod:', paymentMethod);
-    console.log('clabe:', clabe);
-    console.log('payDay:', payDay);
-    console.log('description:', description);
-    console.log('recurrence:', recurrence);
-    console.log('recurrenceName:', recurrenceName);
-    console.log('recurrenceStart:', recurrenceStart);
-    console.log('recurrenceEnd:', recurrenceEnd);
-    console.log(
-      'Guardando información del formulario...',
-      payAmount,
-      paymentMethod,
-      clabe,
-      payDay,
-      description,
-      recurrence,
-      recurrenceName,
-      recurrenceStart,
-      recurrenceEnd
-    );
-    setIsSuccess(true);
-    // Aquí puedes agregar la lógica para manejar el envío del formulario
-  };
-
-  const formatDate = (fecha) => {
-    const meses = [
-      'enero',
-      'febrero',
-      'marzo',
-      'abril',
-      'mayo',
-      'junio',
-      'julio',
-      'agosto',
-      'septiembre',
-      'octubre',
-      'noviembre',
-      'diciembre',
-    ];
-
-    const parts = fecha.split('/');
-    const day = parseInt(parts[0], 10);
-    const monthIndex = parseInt(parts[1], 10) - 1;
-    const year = parseInt(parts[2], 10);
-
-    return `${day} de ${meses[monthIndex]} de ${year}`;
-  };
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
+  const handleLogin = () => {
+    router.push('/notificacion/112309SADSK12/confirmacion'); // redirigir a la página /23 al hacer clic en el botón de login
   };
 
   return (
-    <main className="bg-slate-50">
-      <section className="p-6">
-        <NavbarExternal />
-        <div className="mt-10 justify-center grid text-center">
-          <p className="text-sm font-bold text-blue-950">
-            NOTIFICACIÓN DE DOMICILIACIÓN
-          </p>
-          <p>
-            Usted está autorizando un agendamiento domiciliado iniciado por
-            Cecoban
-          </p>
+    <div className="flex flex-col justify-center items-center h-screen bg-gray-100">
+      <div className="px-4">
+        <h1 className="text-center text-2xl font-bold text-blue-600 ">
+          Banco Azul
+        </h1>
+        <p className="text-center text-lg mt-2 mb-10">
+          Autentícate para confirmar la domicilación
+        </p>
+        <div className="relative pt-8">
+          <label htmlFor="email">Email:</label>
+
+          <input
+            className="w-full py-2 pr-8 border-b bg-gray-100 border-gray-300 focus:outline-none focus:border-indigo-500"
+            type="email"
+            id="email"
+          />
+          <div className="absolute bottom-0 mb-3 right-0 flex items-center pointer-events-none">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 39 38"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9.00914 1.67473H5.00457C2.7929 1.67473 1 3.38432 1 5.49321V9.3117"
+                stroke="black"
+                strokeWidth="2"
+                strokeLinecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M29.032 1.67473H33.0366C35.2483 1.67473 37.0411 3.38432 37.0411 5.49321V9.3117"
+                stroke="black"
+                strokeWidth="2"
+                strokeLinecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M27.0297 11.2209V15.0394"
+                stroke="black"
+                strokeWidth="2"
+                strokeLinecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M11.0114 11.2209V15.0394"
+                stroke="black"
+                strokeWidth="2"
+                strokeLinecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M13.0137 26.4949C13.0137 26.4949 15.016 28.4041 19.0206 28.4041C23.0252 28.4041 25.0274 26.4949 25.0274 26.4949"
+                stroke="black"
+                strokeWidth="2"
+                strokeLinecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M19.0206 11.2209V20.7672H17.0183"
+                stroke="black"
+                strokeWidth="2"
+                strokeLinecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M9.00914 36.0411H5.00457C2.7929 36.0411 1 34.3316 1 32.2226V28.4041"
+                stroke="black"
+                strokeWidth="2"
+                strokeLinecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M29.032 36.0411H33.0366C35.2483 36.0411 37.0411 34.3316 37.0411 32.2226V28.4041"
+                stroke="black"
+                strokeWidth="2"
+                strokeLinecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
         </div>
 
-        <br />
-        {/* FORMULARIO */}
+        <div className="relative pt-8">
+          <label htmlFor="documentId">Contraseña:</label>
+          <input
+            className="w-full py-2 pr-8 border-b bg-gray-100 border-gray-300 focus:outline-none focus:border-indigo-500"
+            type="text"
+            id="nss"
+            required
+          />
+          <div className="absolute bottom-0 mb-3 right-0 flex items-center pointer-events-none">
+            <EyeClosedIcon />
+          </div>
+        </div>
 
-        <form onSubmit={handleSubmit}>
-          {currentPage == 1 && (
-            <div className="mt-2 mb-4 flex gap-6 flex-wrap">
-              <div className="items-center grid gap-6 w-full p-4 bg-white rounded-md drop-shadow-md">
-                <div>
-                  <label className="text-xl">Valor a pagar:</label>
-                  <div className="relative">
-                    <p className="w-full py-2 font-medium px-1 border-b text-blue-700 focus:outline-none focus:border-indigo-500">
-                      MXN {payAmount}
-                    </p>
-                  </div>
-                </div>
-                <div>
-                  <p className="text-xl mb-2">Datos del remitente:</p>
-                  <p>De:</p>
-                  <p className="text-blue-700 font-medium">{data.nombre}</p>
-                  <p className="text-blue-700 font-medium">
-                    Banco: {data.banco}
-                  </p>
-                  <p className="text-blue-700 font-medium">
-                    Tipo de cuenta : {data.tipoCuenta}
-                  </p>
-                </div>
-                <div>
-                  <label htmlFor="payTo">Para:</label>
-                  <div>
-                    <p className="text-blue-700">Cuenta: {data.cuenta}</p>
-                    <p className="text-blue-700">Comercio: {data.comercio}</p>
-                    <p className="text-blue-700">Razón social: {data.razon}</p>
-                  </div>
-                </div>
-                <div className="border-b pb-1">
-                  <label htmlFor="payTo">RFC:</label>
-                  <div>
-                    <p className="text-blue-700">MAAJ870304M28</p>
-                  </div>
-                </div>
-                <div>
-                  <p className="text-xl mb-2">Datos del pago domiciliado:</p>
-                  <label htmlFor="paymentMethod">Frecuencia:</label>
-                  <p className="text-blue-700 font-medium">
-                    personalizada, 1 veces por mes hasta el 25 de marzo de 2025
-                  </p>
-                </div>
-                <div>
-                  <label htmlFor="paymentDescription">
-                    Fecha del primer pago:
-                  </label>
-                  <p className="text-blue-700 font-medium">
-                    1 de junio de 2024
-                  </p>
-                </div>
-                <div>
-                  <p>Número de pagos:</p>
-                  <p className="text-blue-700 font-medium">20</p>
-                </div>
-                <div>
-                  <p>Nombre de la recurrencia:</p>
-                  <p className="text-blue-700 font-medium">Pago amigo</p>
-                </div>
-                <div>
-                  <p>Fuente de pago:</p>
-                  <p className="text-blue-700 font-medium">
-                    Cuenta corriente *****7412
-                  </p>
-                </div>
-                <div className="pb-4 border-b">
-                  <p>Forma de pago:</p>
-                  <p className="text-blue-700 font-medium">Pago domiciliado</p>
-                </div>
-                <p className=" text-xs font-extralight px-3 text-center  ">
-                  La confirmación corresponde a la programación del pago y no a
-                  su realización efectiva. Para que la transacción sea efectiva,
-                  es necesario que disponga del saldo suficiente en su cuenta.
-                  Recuerde que puede cancelar el pago hasta un día antes de su
-                  fecha programada.
-                </p>
-              </div>
-            </div>
-          )}
-        </form>
-
-        <PaginatorExternal
-          currentPage={currentPage}
-          onPageChange={handlePageChange}
-          onSave={handleSubmit}
-          totalPages={2}
-        />
-      </section>
-      <Footer />
-      <ModalConfirm
-        isOpen={isModalOpen}
-        onClose={closeModal}
-        isSuccess={true}
-      />
-    </main>
+        <p className="text-blue-500 text-sm mt-2 hover:underline py-10">
+          Olvidé la contraseña
+        </p>
+        <button
+          className="w-full bg-blue-600 text-white rounded p-2 mt-4 hover:bg-blue-700"
+          onClick={handleLogin}
+        >
+          Login
+        </button>
+        <div className="flex flex-col items-center mt-6">
+          <p className="text-gray-600 mt-2">Ingresa con huella</p>
+        </div>
+      </div>
+    </div>
   );
 }

@@ -17,7 +17,7 @@ export default function NavbarExternal() {
           height={24}
           className="filter grayscale saturate-0 "
         />
-        <p className="pl-2 font-semibold">BANCO MEXICANO</p>
+        <p className="pl-2 font-semibold">BANCO AZUL</p>
       </div>
 
       <div>
