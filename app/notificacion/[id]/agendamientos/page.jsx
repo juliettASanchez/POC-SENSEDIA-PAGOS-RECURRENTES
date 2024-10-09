@@ -25,6 +25,15 @@ export default function Page() {
           </h3>
           <div className="my-5 gap-4 grid">
             <p className="font-medium text-base my-2">Servicios</p>
+
+            <div className="flex justify-between">
+              <p className="w-32">Plan 15 GB</p>
+              <p className="w-32"> $299.00</p>
+              <button className="text-white rounded-full bg-gray-400 hover:bg-gray-500 px-2">
+                Cancelar
+              </button>
+            </div>
+
             <div className="flex justify-between">
               <p className="w-32">Plan amigo</p>
               <p className="w-32"> $2,500.00</p>

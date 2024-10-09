@@ -15,13 +15,15 @@ import { useRouter } from 'next/navigation';
 export default function Page() {
   const [currentPage, setCurrentPage] = useState(1);
   const [to, setTo] = useState('');
-  const [payAmount, setPayAmount] = useState('1,000.00');
+  const [payAmount, setPayAmount] = useState('');
   const [paymentMethod, setPaymentMethod] = useState('');
   const [clabe, setClabe] = useState('');
   const [payDay, setPayDay] = useState('01/6/2024');
   const [description, setDescription] = useState('');
   const [isChecked, setIsChecked] = useState(false);
-  const [recurrenceName, setRecurrenceName] = useState('');
+  const [recurrenceName, setRecurrenceName] = useState(
+    'Alba Marina Alvarez Vazquez'
+  );
   const [recurrenceStart, setRecurrenceStart] = useState('');
   const [recurrenceEnd, setRecurrenceEnd] = useState('');
   const [recurrence, setRecurrence] = useState('');
@@ -29,6 +31,7 @@ export default function Page() {
   const [pay, setPay] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const router = useRouter();
+  const [isTitular, setIsTitular] = useState(true); // Para manejar el checkbox
 
   const currentDate = new Date();
   const year = currentDate.getFullYear();
@@ -340,18 +343,33 @@ export default function Page() {
                 </div>
 
                 <div>
-                  <label htmlFor="recurrenceName">Nombre Completo:</label>
-                  <div className="relative">
+                  <label>
                     <input
-                      className="w-full py-2 border-b text-blue-700 border-gray-300 focus:outline-none focus:border-indigo-500"
-                      type="string"
-                      id="recurrenceName"
-                      value={recurrenceName}
-                      onChange={(e) => setRecurrenceName(e.target.value)}
-                      placeholder="Titular de la cuenta"
-                      required
-                    />
-                  </div>
+                      type="checkbox"
+                      checked={isTitular}
+                      onChange={() => setIsTitular(!isTitular)}
+                    />{' '}
+                    Soy el titular
+                  </label>
+
+                  {!isTitular && (
+                    <div className="mt-5">
+                      <label htmlFor="recurrenceName">
+                        Nombre del Beneficiario:
+                      </label>
+                      <div className="relative">
+                        <input
+                          className="w-full py-2 border-b text-blue-700 border-gray-300 focus:outline-none focus:border-indigo-500"
+                          type="text"
+                          id="recurrenceName"
+                          value={recurrenceName}
+                          onChange={(e) => setRecurrenceName(e.target.value)}
+                          placeholder="Titular de la cuenta"
+                          required
+                        />
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -398,6 +416,13 @@ export default function Page() {
               </div>
 
               <p className="text-center font-medium">Tus datos de pago</p>
+
+              <div class="grid grid-cols-2 gap-4 ">
+                <p>Nombre del Beneficiario:</p>
+                <p class="text-left text-blue-700 font-medium">
+                  {recurrenceName}
+                </p>
+              </div>
 
               <div class="grid grid-cols-2 gap-4 ">
                 <p>Banco:</p>

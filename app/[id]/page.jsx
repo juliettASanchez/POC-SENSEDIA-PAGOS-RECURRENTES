@@ -78,11 +78,6 @@ export default function Page() {
     setRecurrenceEnd(date);
   };
 
-  /* const scrollToTop = () => {
-    console.log("me activo")
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }; */
-
   const handleSubmit = async () => {
     openModal();
     setPay(true);

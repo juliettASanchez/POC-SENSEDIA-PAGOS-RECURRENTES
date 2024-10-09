@@ -211,17 +211,28 @@ export default function confirmDomicilation() {
                 </div>
 
                 <p className="text-center font-medium">Tus datos de pago</p>
-
+                <div className="grid grid-cols-2 gap-4 ">
+                  <p>Nombre del Beneficiario:</p>
+                  <p className="text-left text-blue-700 font-medium">
+                    Alba Marina Alvarez Vazquez
+                  </p>
+                </div>
                 <div class="grid grid-cols-2 gap-4 ">
+                  <p>Banco:</p>
+                  <p className="text-left text-blue-700 font-medium">
+                    Banco Azul
+                  </p>
+                </div>
+                <div className="grid grid-cols-2 gap-4 ">
                   <p>N° de cuenta:</p>
-                  <p class="text-left text-blue-700 font-medium">
+                  <p className="text-left text-blue-700 font-medium">
                     01234984221209
                   </p>
                 </div>
 
-                <div class="grid grid-cols-2 gap-4 ">
+                <div className="grid grid-cols-2 gap-4 ">
                   <p>Tipo de Monto:</p>
-                  <p class="text-left text-blue-700 font-medium">Fijo</p>
+                  <p className="text-left text-blue-700 font-medium">Fijo</p>
                 </div>
               </div>
             </>

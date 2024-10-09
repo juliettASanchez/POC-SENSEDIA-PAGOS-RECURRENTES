@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 const ModalConfirm = ({ isOpen, onClose, isSuccess }) => {
   const [isModalOpen, setIsModalOpen] = useState(isOpen);
 
-  const successTitle = 'Pago domiciliado exitosamente';
+  const successTitle = 'Confirmación de domiciliación exitosa';
   const successDescription =
     'Tu pago ha sido programado con éxito y se procesará según lo programado.';
 
@@ -32,7 +32,7 @@ const ModalConfirm = ({ isOpen, onClose, isSuccess }) => {
             {/* Encabezado del modal */}
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-xl font-semibold text-blue-900">
-                ¡Pago domiciliado exitosamente!
+                ¡Confirmación de domiciliación exitosa!
               </h2>
 
               {/* Botón para cerrar el modal */}

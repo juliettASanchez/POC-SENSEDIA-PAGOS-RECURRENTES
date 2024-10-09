@@ -110,11 +110,6 @@ export default function Page() {
     setRecurrenceEnd(date);
   };
 
-  /* const scrollToTop = () => {
-    console.log("me activo")
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }; */
-
   const handleSubmit = async () => {
     openModal();
     setPay(true);
@@ -129,27 +124,7 @@ export default function Page() {
       recurrenceStart,
       recurrenceEnd,
     };
-    console.log('payAmount:', payAmount);
-    console.log('paymentMethod:', paymentMethod);
-    console.log('clabe:', clabe);
-    console.log('payDay:', payDay);
-    console.log('description:', description);
-    console.log('recurrence:', recurrence);
-    console.log('recurrenceName:', recurrenceName);
-    console.log('recurrenceStart:', recurrenceStart);
-    console.log('recurrenceEnd:', recurrenceEnd);
-    console.log(
-      'Guardando información del formulario...',
-      payAmount,
-      paymentMethod,
-      clabe,
-      payDay,
-      description,
-      recurrence,
-      recurrenceName,
-      recurrenceStart,
-      recurrenceEnd
-    );
+
     const randomResult = Math.random() < 0.5; // 50% de probabilidad de éxito
     setIsSuccess(randomResult);
     // Aquí puedes agregar la lógica para manejar el envío del formulario
@@ -205,34 +180,6 @@ export default function Page() {
     return `${day} de ${meses[monthIndex]} de ${year}`;
   };
 
-  console.log(isSuccess);
-  /* const handleCreateUser = async (user) => {
-    try {
-      console.log(Creating ${user.username});
-      const res = await fetch(/api, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        method: "POST",
-        body: JSON.stringify({
-          email: user.email,
-          name: user.email,
-          password: uuid().toString(),
-        }),
-      });
-      if (res.ok) {
-        mutate(/api?${filterURI});
-        setResetForm(true);
-        console.log(Successfully created);
-      } else {
-        console.error(Failed to block user ${user.id});
-        setResetForm(false);
-      }
-    } catch (error) {
-      console.error("Error blocking user", error);
-    }
-  };
- */
   const openModal = () => {
     setIsModalOpen(true);
   };
