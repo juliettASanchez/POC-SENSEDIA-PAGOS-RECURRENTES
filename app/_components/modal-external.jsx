@@ -48,8 +48,8 @@ const ModalExternal = ({ isOpen, onClose, isSuccess }) => {
               </button>
             </div>
             <p className="text-gray-600 font-light mb-6">
-              Al hacer clic en "Aceptar", serás redirigido al portal bancario
-              para revisar y aceptar o declinar la domiciliación.
+              Al hacer clic en "Ver domiciliación", serás redirigido al portal
+              bancario para revisar y aceptar o declinar la domiciliación.
             </p>
 
             {/* Botón para realizar otro pago */}
